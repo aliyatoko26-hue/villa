@@ -1,0 +1,247 @@
+/* =========================
+   Villa Farfalla Lily - style.css
+   (dipakai bareng Tailwind)
+   ========================= */
+
+:root{
+  --primary:#1a365d;
+  --primary2:#2b6cb0;
+  --secondary:#f6ad55;
+  --wa1:#25d366;
+  --wa2:#128c7e;
+  --text:#1f2937;
+  --bg:#f9fafb;
+}
+
+/* Fonts helper */
+.font-playfair{ font-family:"Playfair Display", serif; }
+.font-poppins{ font-family:"Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{ color:var(--text); background:var(--bg); }
+
+/* ===== Hero gradient ===== */
+.hero-gradient{
+  background: linear-gradient(135deg, var(--primary) 0%, #2c5282 50%, var(--primary2) 100%);
+}
+
+/* ===== Hover card ===== */
+.card-hover{
+  transition: all .4s cubic-bezier(.4,0,.2,1);
+}
+.card-hover:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0,0,0,.25);
+}
+
+/* ===== WhatsApp button ===== */
+.btn-whatsapp{
+  background: linear-gradient(135deg, var(--wa1) 0%, var(--wa2) 100%);
+  transition: all .25s ease;
+}
+.btn-whatsapp:hover{
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px rgba(37,211,102,.35);
+}
+
+/* ===== Floating orbs ===== */
+.floating{ animation: float 6s ease-in-out infinite; }
+@keyframes float{
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-20px); }
+}
+
+/* ===== Fade animation ===== */
+.fade-in{ animation: fadeIn .8s ease-out forwards; }
+@keyframes fadeIn{
+  from{ opacity:0; transform:translateY(30px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+.stagger-1{ animation-delay:.1s; }
+.stagger-2{ animation-delay:.2s; }
+.stagger-3{ animation-delay:.3s; }
+.stagger-4{ animation-delay:.4s; }
+.stagger-5{ animation-delay:.5s; }
+.stagger-6{ animation-delay:.6s; }
+
+/* ===== Villa image block ===== */
+.villa-image{
+  background: linear-gradient(45deg,#e2e8f0,#cbd5e0);
+  position: relative;
+  overflow: hidden;
+}
+.villa-image::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(135deg, rgba(255,255,255,.12) 0%, transparent 55%);
+  pointer-events:none;
+}
+
+/* ===== Price tag ===== */
+.price-tag{
+  background: linear-gradient(135deg, var(--secondary) 0%, #ed8936 100%);
+}
+
+/* ===== Filter button ===== */
+.filter-btn{
+  transition: all .25s ease;
+}
+.filter-btn.active{
+  background: linear-gradient(135deg, #2c5282 0%, var(--primary2) 100%);
+  color:#fff;
+  border-color: transparent;
+}
+
+/* ===== Modal overlay ===== */
+.modal-overlay{
+  background: rgba(0,0,0,.7);
+  backdrop-filter: blur(8px);
+}
+
+/* ===== Gallery (slider) ===== */
+.gallery-container{
+  position: relative;
+  overflow: hidden;
+  height:100%;
+}
+
+/* track digeser pakai transform dari JS */
+.gallery-track{
+  display:flex;
+  height:100%;
+  transition: transform .4s ease-in-out;
+  will-change: transform;
+}
+
+/* 1 slide = 1 layar */
+.gallery-slide{
+  min-width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* gambar asli */
+.gallery-slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* tombol prev/next */
+.gallery-btn{
+  position:absolute;
+  top:50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,.92);
+  border:none;
+  width:40px;
+  height:40px;
+  border-radius:999px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:10;
+  transition: all .2s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,.18);
+
+  /* penting: supaya tombol bisa diklik di modal */
+  pointer-events:auto;
+}
+.gallery-btn:hover{
+  background:#fff;
+  transform: translateY(-50%) scale(1.08);
+}
+.gallery-btn:active{
+  transform: translateY(-50%) scale(1.02);
+}
+
+.gallery-btn-prev{ left:10px; }
+.gallery-btn-next{ right:10px; }
+
+/* dots */
+.gallery-dots{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  padding:12px 0;
+}
+.gallery-dot{
+  width:8px;
+  height:8px;
+  border-radius:999px;
+  background:#cbd5e0;
+  cursor:pointer;
+  transition: all .25s ease;
+  opacity:.95;
+
+  /* penting: dots bisa diklik */
+  pointer-events:auto;
+}
+.gallery-dot.active{
+  background:#2c5282;
+  width:24px;
+  border-radius:6px;
+}
+
+/* ===== Fix: agar slider di modal detail bisa di-klik/geser =====
+   Kadang overlay/parent menangkap klik & scroll.
+   Ini memastikan area slider menerima event pointer. */
+#detail-modal .gallery-container,
+#detail-modal .gallery-track,
+#detail-modal .gallery-slide{
+  pointer-events:auto;
+}
+
+/* tombol close di atas gambar */
+#close-detail{
+  pointer-events:auto;
+}
+
+/* ===== Scroll modal lebih enak ===== */
+#detail-modal .max-h-\[90vh\]{
+  scrollbar-width: thin;
+}
+
+/* ===== Mobile small tweaks ===== */
+@media (max-width: 640px){
+  .gallery-btn{
+    width:36px;
+    height:36px;
+  }
+  .gallery-btn-prev{ left:8px; }
+  .gallery-btn-next{ right:8px; }
+}
+
+/* ==============================
+   FIX TOMBOL SLIDER TIDAK BISA DIKLIK
+   ============================== */
+
+/* 1. Overlay jangan menangkap klik */
+.villa-image::before {
+  pointer-events: none;
+}
+
+/* 2. Pastikan gambar & slider satu lapisan */
+.villa-image,
+.gallery-container {
+  position: relative;
+}
+
+/* 3. Tombol panah HARUS PALING ATAS */
+.gallery-btn {
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+/* 4. Titik slider juga bisa diklik */
+.gallery-dots,
+.gallery-dot {
+  pointer-events: auto;
+  z-index: 9999;
+}
