@@ -11,13 +11,15 @@
 
 /* ========= CONFIG ========= */
 const CONFIG = {
-  whatsapp_number: "6285771443462", // WA: 085771443462 -> format internasional tanpa 0
+  whatsapp_number: "6285771443462", // WA: 085771443462
+
   map_embed_src:
-    "https://www.google.com/maps/embed?pb=!4v0!6m8!1m7!1sg9LRk-BGsTI-pkr2t7PTfQ!2m2!1d-6.702878!2d106.675328!3f73.46706!4f0!5f0.7820865974627469",
-  // alamat (buat ditampilkan di UI)
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.5470656726225!2d106.675328!3d-6.702878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69d16d6e233055%3A0x62b213c76a8781d1!2sVilla%20Farfalla%20Lily!5e0!3m2!1sid!2sid!4v1769630814719",
+
   map_address:
     "Villa Farfalla Lily, Ciasihan, Kec. Pamijahan, Kabupaten Bogor, Jawa Barat 16810",
 };
+
 
 /* ========= DATA VILLA (ISI FOTO BANYAK) =========
   Cara pakai foto:
