@@ -245,3 +245,8 @@ body{ color:var(--text); background:var(--bg); }
   pointer-events: auto;
   z-index: 9999;
 }
+
+/* HAPUS tombol panah galeri di modal detail */
+#detail-modal .gallery-btn {
+  display: none !important;
+}
